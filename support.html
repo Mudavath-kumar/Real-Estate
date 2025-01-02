@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary: #2c5282;
+            --secondary: #4a5568;
+            --accent: #63b3ed;
+        }
+
+        body {
+            background: #f7fafc;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .support-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            display: none;
+        }
+
+        .ticket-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #1a365d;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #48bb78;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>How can we help you?</h1>
+            <p>Find answers or submit a support ticket</p>
+        </header>
+
+        <div class="support-grid">
+            <div class="support-card">
+                <h3>Documentation</h3>
+                <p>Browse our comprehensive guides and documentation</p>
+            </div>
+            <div class="support-card">
+                <h3>FAQ</h3>
+                <p>Find answers to commonly asked questions</p>
+            </div>
+            <div class="support-card">
+                <h3>Live Chat</h3>
+                <p>Chat with our support team in real-time</p>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I reset my password?
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Click on the "Forgot Password" link on the login page and follow the instructions sent to your email.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I update my profile?
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Go to Settings > Profile and click on the Edit button to update your information.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What payment methods do you accept?
+                    <span class="toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    We accept all major credit cards, PayPal, and bank transfers.
+                </div>
+            </div>
+        </div>
+
+        <div class="ticket-form">
+            <h2>Submit a Support Ticket</h2>
+            <form id="supportForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select a category</option>
+                        <option value="technical">Technical Issue</option>
+                        <option value="billing">Billing</option>
+                        <option value="account">Account</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Description</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Ticket</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="success-message" id="successMessage">
+        Your ticket has been submitted successfully!
+    </div>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.toggle');
+                
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                toggle.textContent = answer.style.display === 'block' ? '-' : '+';
+            });
+        });
+
+        // Form Submission
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+                this.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
